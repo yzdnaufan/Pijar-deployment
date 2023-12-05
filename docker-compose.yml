@@ -24,7 +24,7 @@ services:
     ports: 
       - "3005:3005"
     depends_on:
-      - backend
+      - backend-bizbot
     command: npm run dev -- --port 3005 --host 0.0.0.0
     networks:
       - local-service-prod
