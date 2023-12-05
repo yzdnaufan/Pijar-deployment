@@ -1,8 +1,8 @@
 version: "3"
 name: "bizbot-development"
 services:
-  backend:
-    container_name: backend-chatbot-container
+  backend-bizbot:
+    container_name: backend-bizbot-container
     restart: always
     build: 
       context: ./backend
@@ -16,8 +16,8 @@ services:
     networks:
       - local-service-prod
       - nginx-proxy
-  frontend:
-    container_name: frontend-chatbot-container
+  frontend-bizbot:
+    container_name: frontend-bizbot-container
     build:
       context: ./frontend
       dockerfile: Dockerfile
