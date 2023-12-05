@@ -4,7 +4,7 @@ import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css'
 import {MainContainer, ChatContainer, MessageList, Message,MessageInput, TypingIndicator  } from '@chatscope/chat-ui-kit-react'
 
 // const API_URL="http://localhost:8005"
-const API_URL="https://bizbot-api.jawabot-dev.web.id"
+const API_URL="https://bizbot-api.menkrepp.my.id"
 
 function App() {
   const [typing, setTyping] = useState(false)

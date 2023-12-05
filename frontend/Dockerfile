@@ -10,6 +10,6 @@ RUN apt-get update && apt-get install -y \
 
 COPY package*.json ./
 RUN npm install
-
+EXPOSE 8006
 COPY . .
 # RUN npm run build

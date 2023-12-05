@@ -23,6 +23,8 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - backend-bizbot
+    ports:
+      - "8006:8006"
     command: npm run dev -- --port 8006 --host 0.0.0.0
     networks:
       - local-service-prod
