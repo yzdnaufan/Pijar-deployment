@@ -13,6 +13,9 @@ services:
       - ./backend/.env
     volumes:
       - ./backend/:/app
+    networks:
+      - local-service-prod
+      - nginx-proxy
   frontend:
     container_name: frontend-chatbot-container
     build:
@@ -23,10 +26,17 @@ services:
     depends_on:
       - backend
     command: npm run dev -- --port 3005 --host 0.0.0.0
+    networks:
+      - local-service-prod
+      - nginx-proxy
 
   redis:
     restart: always
     image: redis:latest
+    networks:
+      - local-service-prod
+
+
   #   networks:
   #     - jawabot-dev-network
   #   volumes:
@@ -35,7 +45,12 @@ services:
   qdrant:
     restart: always
     image: qdrant/qdrant:latest
-  #   networks:
-  #     - jawabot-dev-network
-  #   volumes:
-  #     - qdrant-data:/qdrant/storage
+    networks:
+      - local-service-prod
+
+networks:
+  nginx-proxy:
+    name: nginx-proxy
+    external: true
+  local-service-prod:
+    name: local-service-prod

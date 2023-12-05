@@ -21,7 +21,8 @@ app = FastAPI()
 
 origins = [
     "http://localhost:5173",
-    "http://localhost:3005"  # adjust to match the domain of your client app
+    "http://localhost:3005",
+    "https://bizbot.menkrepp.my.id"  # adjust to match the domain of your client app
     # "https://example.com",
 ]
 
