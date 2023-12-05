@@ -1,0 +1,41 @@
+version: "3"
+name: "bizbot-development"
+services:
+  backend:
+    container_name: backend-chatbot-container
+    restart: always
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8005:15400"
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend/:/app
+  frontend:
+    container_name: frontend-chatbot-container
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports: 
+      - "3005:3005"
+    depends_on:
+      - backend
+    command: npm run dev -- --port 3005 --host 0.0.0.0
+
+  redis:
+    restart: always
+    image: redis:latest
+  #   networks:
+  #     - jawabot-dev-network
+  #   volumes:
+  #     - redis-data:/data
+
+  qdrant:
+    restart: always
+    image: qdrant/qdrant:latest
+  #   networks:
+  #     - jawabot-dev-network
+  #   volumes:
+  #     - qdrant-data:/qdrant/storage
