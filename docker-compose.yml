@@ -21,8 +21,6 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    ports: 
-      - "3005:8006"
     depends_on:
       - backend-bizbot
     command: npm run dev -- --port 8006 --host 0.0.0.0
